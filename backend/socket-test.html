@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socket Test</title>
+</head>
+<body>
+  <h2>Socket Processing Updates</h2>
+  <div id="log"></div>
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script>
+    const socket = io("http://localhost:5000");
+
+    socket.on("connect", () => {
+      console.log("Connected to server");
+      document.getElementById("log").innerHTML += "<p>Connected to server</p>";
+    });
+
+    socket.on("processing_update", (data) => {
+      document.getElementById("log").innerHTML += 
+        `<p>Video: ${data.videoId} — Progress: ${data.progress}%</p>`;
+    });
+
+    socket.on("processing_done", (video) => {
+      document.getElementById("log").innerHTML += 
+        `<p><b>Done!</b> Status: ${video.status}, Score: ${video.sensitivityScore}</p>`;
+    });
+  </script>
+</body>
+</html>
