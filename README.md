@@ -31,6 +31,14 @@ A full stack application that allows users to upload videos, process them for se
 
 ## 📦 Setup Instructions
 
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+
+
 ### Backend
 ```bash
 cd backend
